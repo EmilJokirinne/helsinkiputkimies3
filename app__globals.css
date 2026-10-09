@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #061428;
+  --color-navy-900: #0b1f3a;
+  --color-navy-800: #12305a;
+  --color-navy-700: #1b3f72;
+  --color-navy-100: #e6edf6;
+  --color-navy-50: #f3f6fa;
+  --color-teal-700: #0b6f6b;
+  --color-teal-600: #0e8a85;
+  --color-teal-500: #14a39d;
+  --color-teal-100: #d7f1ef;
+  --color-teal-50: #ecf8f7;
+  --color-ink: #16212f;
+  --color-muted: #536173;
+  --color-line: #dde3ea;
+  --color-surface: #f6f8fa;
+  --color-warn-50: #fff8eb;
+  --color-warn-700: #8a5300;
+  --color-danger-50: #fdf1f0;
+  --color-danger-700: #a3261b;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(11 31 58 / 0.05), 0 4px 16px rgb(11 31 58 / 0.05);
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-[15px] font-semibold transition-colors;
+}
+@utility btn-primary {
+  @apply btn bg-navy-900 text-white hover:bg-navy-800;
+}
+@utility btn-accent {
+  @apply btn bg-teal-700 text-white hover:bg-teal-600;
+}
+@utility btn-secondary {
+  @apply btn border border-line bg-white text-navy-900 hover:border-navy-700;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+    font-feature-settings: "tnum" 0;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    @apply text-navy-900 tracking-tight;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-teal-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-teal-100);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-[var(--shadow-card)];
+  }
+  .link {
+    @apply font-medium text-teal-700 underline decoration-teal-500/40 underline-offset-4 hover:decoration-teal-700;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.14em] text-teal-700;
+  }
+  .prose-fi p {
+    @apply mb-4 leading-relaxed text-ink/90;
+  }
+  .prose-fi h2 {
+    @apply mt-10 mb-3 text-2xl font-semibold;
+  }
+  .prose-fi ul,
+  .prose-fi ol {
+    @apply mb-5 space-y-2 pl-5 leading-relaxed;
+  }
+  .prose-fi ul {
+    @apply list-disc marker:text-teal-600;
+  }
+  .prose-fi ol {
+    @apply list-decimal marker:font-semibold marker:text-navy-700;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-muted/70 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500/30;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-semibold text-navy-900;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
